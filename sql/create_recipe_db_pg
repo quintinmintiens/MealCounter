@@ -1,0 +1,56 @@
+-- Create the database
+CREATE DATABASE recipe_database;
+
+-- Connect to the database
+\c recipe_database
+
+-- Create the ingredients table
+CREATE TABLE ingredients (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    unit TEXT NOT NULL
+);
+
+-- Create the recipes table
+CREATE TABLE recipes (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    servings INTEGER NOT NULL
+);
+
+-- Create the recipe_ingredients table
+CREATE TABLE recipe_ingredients (
+    recipe_id INTEGER NOT NULL,
+    ingredient_id INTEGER NOT NULL,
+    quantity NUMERIC(10, 2) NOT NULL,
+    PRIMARY KEY (recipe_id, ingredient_id),
+    FOREIGN KEY (recipe_id) REFERENCES recipes(id),
+    FOREIGN KEY (ingredient_id) REFERENCES ingredients(id)
+);
+
+-- Create an index on the recipe name for fast searching
+CREATE INDEX recipe_name_index ON recipes(name);
+
+-- Create some example data for testing
+INSERT INTO ingredients (name, unit) VALUES
+    ('flour', 'kg'),
+    ('sugar', 'kg'),
+    ('butter', 'kg'),
+    ('eggs', 'each'),
+    ('milk', 'l');
+    
+INSERT INTO recipes (name, servings) VALUES
+    ('Chocolate Cake', 12),
+    ('Apple Pie', 8);
+    
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity) VALUES
+    (1, 1, 1.5),
+    (1, 2, 1),
+    (1, 3, 1),
+    (1, 4, 3),
+    (1, 5, 0.5),
+    (2, 1, 0.5),
+    (2, 2, 1),
+    (2, 3, 0.25),
+    (2, 4, 3),
+    (2, 5, 0.25);

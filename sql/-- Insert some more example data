@@ -1,0 +1,23 @@
+-- Insert some more example data
+INSERT INTO ingredients (name, unit) VALUES
+    ('chicken breast', 'kg'),
+    ('rice', 'kg'),
+    ('tomato sauce', 'l'),
+    ('onion', 'each'),
+    ('garlic', 'cloves');
+    
+INSERT INTO recipes (name, servings) VALUES
+    ('Chicken Curry', 50),
+    ('Spaghetti Bolognese', 100);
+    
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity) VALUES
+    (3, 1, 25),
+    (3, 2, 10),
+    (3, 3, 5),
+    (3, 4, 5),
+    (3, 5, 10),
+    (4, 1, 50),
+    (4, 2, 20),
+    (4, 3, 10),
+    (4, 4, 20),
+    (4, 5, 20);
