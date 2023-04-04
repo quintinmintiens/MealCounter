@@ -101,3 +101,4 @@ servings_entry.pack(side=tk.LEFT)
 
 # Create the button to display the recipe's ingredients
 calculate_button = tk.Button(root, text="Calculate Ingredients", command=display_recipe_ingredients)
+calculate_button.pack(side=tk.TOP, padx=10, pady=10)
